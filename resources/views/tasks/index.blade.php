@@ -25,10 +25,12 @@
                 </div>
                 @endif
 
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg" x-data="{ search: '' }">
                     <div class="p-6">
+                        <input type="text" x-model="search" placeholder="Cauta dupa titlu..." class="w-full border rounded px-3 py-2 dark:bg-gray-700 dark:text-white">
                         @forelse($tasks as $task)
-                            <div class="border-b dark:border-gray-700 py-4 flex justify-between items-center">
+                            <div class="border-b dark:border-gray-700 py-4 flex justify-between items-center"
+                            x-show="search === '' || '{{strtolower($task->title) }}'.includes(search.toLowerCase()) ">
                                 <div>
                                     <h3 class="font-semibold text-gray-800 dark:text-gray-200">{{ $task->title }}</h3>
 
