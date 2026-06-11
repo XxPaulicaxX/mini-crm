@@ -33,6 +33,9 @@
                             x-show="search === '' || '{{strtolower($task->title) }}'.includes(search.toLowerCase()) ">
                                 <div>
                                     <h3 class="font-semibold text-gray-800 dark:text-gray-200">{{ $task->title }}</h3>
+                                    @if(auth()->user()->role === 'admin')
+                                        <p class="text-xs text-gray-400">Creat de: {{ $task->user->name }}</p>
+                                    @endif
 
                                     <p class="text-sm text-gray-500">{{ $task->description }}</p>
 
@@ -40,7 +43,7 @@
                                     {{ $task->status === 'completed' ? 'bg-green-100 text-green-800' : '' }}
                                     {{ $task->status === 'in_progress' ? 'bg-yellow-100 text-yellow-800' : ''}}
                                     {{ $task->status === 'pending' ? 'bg-red-100 text-red-800' : '' }}"> 
-                                    {{ $task->status }}
+                                    {{ ucwords(str_replace('_',' ', $task->status)) }}
                                     </span>
                                 </div>
                                 <div class="flex gap-2">
