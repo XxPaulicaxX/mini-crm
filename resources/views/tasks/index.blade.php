@@ -7,8 +7,18 @@
             </div>
         </x-slot>
 
+        
+
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+            <div class="flex gap-2 mb-4">
+            <a href="{{ route('tasks.index') }}" class="px-3 py-1 rounded text-sm {{ !request('status') ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300' }}">Toate</a>
+            <a href="{{ route('tasks.index',['status' => 'pending']) }}" class="px-3 py-1 rounded text-sm {{ request('status') === 'pending' ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300' }}">Pending</a>
+            <a href="{{ route('tasks.index',['status' => 'in_progress']) }}" class="px-3 py-1 rounded text-sm {{ request('status') === 'in_progress' ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300' }}">In Progress</a>
+            <a href="{{ route('tasks.index',['status' => 'completed']) }}" class="px-3 py-1 rounded text-sm {{ request('status') === 'completed' ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300' }}">Completed</a>
+        </div>
+
                 @if(session('success'))
                 <div class="bg-green-100 text-green-800 p-4 rounded mb-4">
                     {{ session('success') }}

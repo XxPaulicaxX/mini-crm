@@ -7,8 +7,15 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    public function index(){
-        $tasks = auth()->user()->tasks()->latest()->get();
+    public function index(Request $request){
+        $query = auth()->user()->tasks()->latest();
+
+        if($request->filled('status')) {
+            $query->where('status',$request->status); 
+        }
+
+        $tasks = $query->get();
+
         return view('tasks.index', compact('tasks'));
     }
 
