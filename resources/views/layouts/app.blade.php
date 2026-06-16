@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" 
-    x-data="{ dark: window.innerWidth >= 640 ? (localStorage.getItem('dark') === 'true') : (window.matchMedia('(prefers-color-scheme: dark)').matches}" 
+    x-data="{ dark: window.innerWidth >= 640 ? (localStorage.getItem('dark') === 'true') : (window.matchMedia('(prefers-color-scheme: dark)').matches)}" 
     x-init="if (window.innerWidth >= 640) {
         $watch('dark', val => localStorage.setItem('dark', val))
     }" 
