@@ -15,7 +15,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
                     @foreach($users as $user)
-                        <div class="border-b dark:border-gray-700 py-4 flex justify-between items-center">
+                        <div class="border-b dark:border-gray-700 py-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
                             <div>
                                 <h3 class="font-semibold text-gray-800 dark:text-gray-200">{{ $user->name }}</h3>
                                 <p class="text-sm text-gray-500">{{ $user->email }}</p>
