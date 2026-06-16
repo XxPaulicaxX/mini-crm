@@ -80,6 +80,12 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+
+        <x-responsive-nav-link :href="route('tasks.index')" :active="request()->routeIs('tasks.*')">{{ __('Tasks') }}</x-responsive-nav-link>
+
+        @if(auth()->user()->role === 'admin')
+            <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">{{ __('Utilizatori') }}</x-responsive-nav-link>
+        @endif
         </div>
 
         <!-- Responsive Settings Options -->
