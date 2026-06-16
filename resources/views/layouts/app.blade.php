@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data="{ dark:localStorage.getItem('dark') === 'true' }" x-init="$watch('dark', val => localStorage.setItem('dark',val))" :class="{ 'dark': dark }">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" 
+    x-data="{ dark: window.innerWidth >= 640 ? (localStorage.getItem('dark') === 'true') : (window.matchMedia('(prefers-color-scheme: dark)').matches}" 
+    x-init="if (window.innerWidth >= 640) {
+        $watch('dark', val => localStorage.setItem('dark', val))
+    }" 
+    :class="{ 'dark': dark }">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
